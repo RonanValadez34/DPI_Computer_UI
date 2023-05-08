@@ -1,0 +1,221 @@
+<ServoScreen>:
+    name: 'servo'
+    FloatLayout:
+        size_hint: None, None
+
+    DPEAButton:
+        # Quit button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.95
+
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+
+        text: "Quit"
+        on_press: root.exit_program()
+
+    DPEAButton:
+        #Go back button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+
+        text: "Go back"
+        on_press: root.transition_back()
+
+    # button for basic rotation. Used to check if servo works
+    DPEAButton:
+        size: 100, 100
+        center_x: root.width * 0.85
+        center_y: root.height * 0.8
+
+        color: 0.035, 0.152, 0.725, 1
+        text: "Basic Rotation"
+
+        on_press: root.rotateServo()
+
+    # button for rotateServoToAngle() function
+    DPEAButton:
+        size: 100, 100
+        center_x: root.width * 0.65
+        center_y: root.height * 0.8
+
+        color: 0.035, 0.152, 0.725, 1
+        text: "Rotate to An Angle"
+
+        on_press: root.rotateServoToAngle()
+
+    # button to select servo 0
+    DPEAButton:
+        id: servo_0
+        size: 100, 100
+        center_x: root.width * 0.35
+        center_y: root.height * 0.8
+
+        color: 0.035, 0.152, 0.725, 1
+        text: "Servo 0"
+
+        on_press: root.selectServo0()
+
+    # button to select servo 1
+    DPEAButton:
+        id: servo_1
+        size: 100, 100
+        center_x: root.width * 0.45
+        center_y: root.height * 0.8
+
+        color: 0.035, 0.152, 0.725, 1
+        text: "Servo 1"
+
+        on_press: root.selectServo1()
+
+# buttons and labels for keyboard
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x - 100
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setServoAngle(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setServoAngle(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x + 100
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setServoAngle(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x - 100
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setServoAngle(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setServoAngle(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x + 100
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setServoAngle(6)
+
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x - 100
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setServoAngle(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setServoAngle(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x + 100
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setServoAngle(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setServoAngle(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x - 100
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeNum()
+
+    # label for inputted angle
+    Label:
+        id: angle_lable
+        text: 'Servo angle: ' + root.my_angle0
+        font_size: 40
+        center_x: root.width * 0.20
+        y: root.height * 0.05
+        color: 0.0, 0.0, 0.0, 1
+
+    # label for describing what to input
+    Label:
+        id: angle_info
+        text: 'Enter Value (0-180) '
+        font_size: 40
+        center_x: root.width * 0.05
+        y: root.height * 0.15
+        color: 0.0, 0.0, 0.0, 1
+
+    # label for instructions
+    Label:
+        id: info_label
+        text: 'Notes: Select which servo you want to move\nSet angle then press Rotate to an Angle\nAn * means servo selected\nYou must select a servo in order to input angle\nMust delete data from other servo in order to\nset data for different servo\nTo use the Basic Rotation Button\nSelect a servo, and then press\nBasic Rotation'
+        font_size: 25
+        center_x: root.width * -0.25
+        y: root.height * 0.05
+        color: 0.0, 0.0, 0.0, 1
+
+    # label for title
+    Label:
+        text: 'Servo Screen'
+        font_size: 40
+        center_x: root.width * 0.0
+        y: root.height * 0.45
+        color: 0.0, 0.0, 0.0, 1
+
+    # hidden label, appears when an error occurs
+    Label:
+        id: error_servo
+        text: ''
+        font_size: 40
+        center_x: root.width * 0.0
+        y: root.height * -0.45
+        color: 0.0, 0.0, 0.0, 1
+
+
+
+
