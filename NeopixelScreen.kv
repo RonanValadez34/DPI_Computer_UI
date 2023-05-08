@@ -1,0 +1,412 @@
+<NeopixelScreen>:
+    name: 'Neopixel'
+    FloatLayout:
+        size_hint: None, None
+
+    DPEAButton:
+        # Quit button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "Quit"
+        on_press: root.exit_program()
+
+
+    DPEAButton:
+        #Go back button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Go back"
+        on_press: root.transition_back()
+
+    DPEAButton:
+        # Button to Select Neopixel 0
+        id: neopixel0
+        size: 100, 100
+        center_x: root.width * 0.05
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Neopixel 0"
+        on_press: root.selectNeopixel0()
+
+    DPEAButton:
+        # Button to Select Neopixel 1
+        id: neopixel1
+        size: 100, 100
+        center_x: root.width * 0.15
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Neopixel 1"
+        on_press: root.selectNeopixel1()
+
+
+
+    DPEAButton:
+        #set Number of Neopixels in the strip
+        id: num_neopixels
+        size: 100, 100
+        center_x: root.width * 0.25
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Number of Neopixels"
+        on_press: root.selectNumberOfNeopixels()
+
+    DPEAButton:
+        # Button to set index
+        id: index
+        size: 100, 100
+        center_x: root.width * 0.45
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Index"
+        on_press: root.selectIndex()
+
+    DPEAButton:
+        # Button to set neopixel color
+        size: 100, 100
+        center_x: root.width * 0.55
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Set Neopixel Color"
+        on_press: root.setIndividualNeopixel()
+
+
+    DPEAButton:
+        # Button to turn off neopixels
+        size: 100, 100
+        center_x: root.width * 0.35
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Off"
+        on_press: root.setNeopixelsoff()
+
+    DPEAButton:
+        #Set the first red value
+        id: set_red
+        size: 100, 100
+        center_x: root.width * 0.65
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Set Red Value"
+        on_press: root.selectRed1()
+
+    DPEAButton:
+        #set green value
+        id: set_green
+        size: 100, 100
+        center_x: root.width * 0.75
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Set Green Value"
+        on_press: root.selectGreen1()
+
+    DPEAButton:
+        #set blue value
+        id: set_blue
+        size: 100, 100
+        center_x: root.width * 0.85
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Set Blue Value"
+        on_press: root.selectBlue1()
+
+
+
+
+# Keyboard for RGB values
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x + 300
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x + 400
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x + 500
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x + 300
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x + 400
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x + 500
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(6)
+
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x + 300
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x +400
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x + 500
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x +400
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x + 300
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeColor()
+
+    # label to display current red value
+    Label:
+        id: red_value
+        text: 'R1: ' + root.neopixel0_redValue
+        font_size: 25
+        center_x: root.width * 0.4
+        y: root.height * 0.1
+        color: 0.0, 0.0, 0.0, 1
+
+    # label to display current green value
+    Label:
+        id: green_value
+        text: 'G1: ' + root.neopixel0_greenValue
+        font_size: 25
+        center_x: root.width * 0.4
+        y: root.height * 0.05
+        color: 0.0, 0.0, 0.0, 1
+
+    # label to display current blue value
+    Label:
+        id: blue_value
+        text: 'B1: ' + root.neopixel0_blueValue
+        font_size: 25
+        center_x: root.width * 0.4
+        y: root.height * 0.0
+        color: 0.0, 0.0, 0.0, 1
+
+
+
+    # instructions for color keyboard
+    Label:
+        id: color_info
+        text: 'Enter Color Values'
+        font_size: 25
+        center_x: root.width * 0.24
+        y: root.height * 0.15
+        color: 0.0, 0.0, 0.0, 1
+
+#Keyboard and labels for other input
+
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x - 800
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readKeyboardInput(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x -700
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readKeyboardInput(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x - 600
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readKeyboardInput(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x - 800
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readKeyboardInput(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x -700
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readKeyboardInput(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x -600
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readKeyboardInput(6)
+
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x - 800
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readKeyboardInput(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x -700
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readKeyboardInput(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x -600
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readKeyboardInput(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x -700
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readKeyboardInput(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x - 800
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeKeyboardInput()
+
+    # label to dispaly the number of neopixels in a strip
+    Label:
+        id: number_neopixels_value
+        text: 'Number of Neopixels: ' + root.numNeopixels0
+        font_size: 25
+        center_x: root.width * -0.35
+        y: root.height * -0.30
+        color: 0.0, 0.0, 0.0, 1
+
+    # label to display current blank last counter
+    Label:
+        id: index_value
+        text: 'Index: ' + root.index
+        font_size: 25
+        center_x: root.width * -0.4
+        y: root.height * -0.42
+        color: 0.0, 0.0, 0.0, 1
+
+    #keyboard instructions
+    Label:
+        id: keyboard_info
+        text: 'Enter the Number of Neopixels\nEnter the desired Index'
+        font_size: 20
+        center_x: root.width * -0.33
+        y: root.height * 0.18
+        color: 0.0, 0.0, 0.0, 1
+
+#page instruction
+    Label:
+        text: 'READ BEFORE USING:\n1. Select which Neopixel Strip you want to use\n2. To set the color of a single Neopixel, Press the Number of Neopixels button\nand enter the number of Neopixels on the associated keyboard\n3. Press the off button\n4. Press the index button, and use the associated\nkeyboard to enter the desired index\n0 based indexing is used, so 0 corresponds to the first neopixel\n5. Use the Set Red, Blue and Green Value buttons to\nchose which color to input one at a time\n6. Enter color value using associated Keyboard\n7. Press set Neopixel Color to set the color of the Neopixel\n8. If you are still using the same strip, from now on, all you have\nto do is set the index and colors\nAn * means button selected\nYOU MUST USE THE OFF BUTTON BEFORE SETTING\nTHE COLOR OF A SINGLE NEOPIXEL\nThe off button creates an array which is necessary\nfor setting the colors\nYOU MUST ENTER A VALUE FOR EVERY COLOR\nMake sure to turn off strips before exiting'
+        font_size: 20
+        center_x: root.width * 0.0
+        y: root.height * 0.01
+        color: 0.0, 0.0, 0.0, 1
+
+    # label for title
+    Label:
+        text: 'Neopixel Screen'
+        font_size: 40
+        center_x: root.width * 0.0
+        y: root.height * 0.45
+        color: 0.0, 0.0, 0.0, 1
+
+
+    # hidden label that appears when an error occurs
+    Label:
+        id: error_neopixel
+        text: ''
+        font_size: 40
+        center_x: root.width * 0.0
+        y: root.height * -0.45
+        color: 0.0, 0.0, 0.0, 1
