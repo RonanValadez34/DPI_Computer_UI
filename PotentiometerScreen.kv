@@ -1,0 +1,52 @@
+<PotentiometerScreen>:
+    #: import time __main__.time
+
+    name: 'Potentiometer'
+    FloatLayout:
+        size_hint: None, None
+
+    DPEAButton:
+        # Quit button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "Quit"
+        on_press: root.exit_program()
+
+
+    DPEAButton:
+        #Go back button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Go back"
+        on_press: root.transition_back()
+
+    # label for potentiometer 0's value
+    Label:
+        id: potentiometer0_label
+        text: 'Potentiometer 0 Value: ' + root.potentiometer0_value
+        font_size: 25
+        center_x: root.width * 0.2
+        y: root.height * 0.05
+        color: 0.0, 0.0, 0.0, 1
+
+    # label for potentiometer 1's value
+    Label:
+        id: potentiometer1_label
+        text: 'Potentiometer 1 Value: ' + root.potentiometer1_value
+        font_size: 25
+        center_x: root.width * -0.2
+        y: root.height * 0.05
+        color: 0.0, 0.0, 0.0, 1
+
+    # label for title
+    Label:
+        text: 'Potentiometer Screen'
+        font_size: 40
+        center_x: root.width * 0.0
+        y: root.height * 0.45
+        color: 0.0, 0.0, 0.0, 1
