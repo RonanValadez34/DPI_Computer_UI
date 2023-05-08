@@ -1,0 +1,697 @@
+<StepperScreen>:
+    name: 'stepper'
+    FloatLayout:
+        size_hint: None, None
+
+# top row of buttons from left to right:
+    DPEAButton:
+        # Millimeters Button
+        id: milli
+        size: 100, 100
+        center_x: root.width * 0.05
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "Millimeters"
+        on_press: root.setUnitsToMillimeters()
+
+    DPEAButton:
+        # Revolutions button
+        id: revolution
+        size: 100, 100
+        center_x: root.width * 0.15
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "Revolutions"
+        on_press: root.setUnitsToRevolutions()
+
+    DPEAButton:
+        # Steps button
+        id: steps
+        size: 100, 100
+        center_x: root.width * 0.25
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "Steps"
+        on_press: root.setUnitsToSteps()
+
+    DPEAButton:
+        # Get Position button
+        size: 100, 100
+        center_x: root.width * 0.65
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "Get Position"
+        on_press: root.getPosition()
+
+    DPEAButton:
+        # Set CCW Direction
+        id: CCW_movement
+        size: 100, 100
+        center_x: root.width * 0.75
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "CCW Direction"
+        on_press: root.CCWMovement()
+
+    DPEAButton:
+        # Set CW Direction
+        id: CW_Movement
+        size: 100, 100
+        center_x: root.width * 0.85
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "CW Direction"
+        on_press: root.CWMovement()
+
+    DPEAButton:
+        # Quit button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "Quit"
+        on_press: root.exit_program()
+
+# Bottow Row of Buttons Left to Right:
+    DPEAButton:
+        id: enable_motor
+        size: 100, 100
+        center_x: root.width * 0.15
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Enable all motors"
+        on_press: root.enableMotors()
+
+    DPEAButton:
+        #Button to change stepper_number to 0
+        id: motor_0
+        size: 100, 100
+        center_x: root.width * 0.25
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Motor 0"
+        on_press: root.selectStepper0()
+
+    DPEAButton:
+        #Button to change stepper_number to 1
+        id: motor_1
+        size: 100, 100
+        center_x: root.width * 0.35
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Motor 1"
+        on_press: root.selectStepper1()
+
+    DPEAButton:
+        #Button to change stepper_number to 2
+        id: motor_2
+        size: 100, 100
+        center_x: root.width * 0.45
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Motor 2"
+        on_press: root.selectStepper2()
+
+    DPEAButton:
+        #Button to get status
+        size: 100, 100
+        center_x: root.width * 0.55
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Get Status"
+        on_press: root.getStatus()
+
+    DPEAButton:
+        #Button to rotate stepper CCW once
+        size: 100, 100
+        center_x: root.width * 0.65
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Rotate Stepper\nOnce CCW"
+        on_press: root.runBasicMotionCCW()
+
+    DPEAButton:
+        # button to rotate steppers once with their given input
+        size: 100, 100
+        center_x: root.width * 0.75
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Rotate all Steppers\nWith Input"
+        on_press: root.runInput()
+
+    DPEAButton:
+        #Button to rotate stepper CW once
+        size: 100, 100
+        center_x: root.width * 0.85
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Rotate Stepper\nOnce CW"
+        on_press: root.runBasicMotionCW()
+
+    DPEAButton:
+        #Go back button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Go back"
+        on_press: root.transition_back()
+
+#labels for guide, position, status, velocity, and title
+    Label:
+        id: page_info
+        text: 'STEPS: An * means button is selected\n1. Enable Motors\n2. Select Motor\n 3. Select Direction to Move\n4. Select Units\n5. Enter values\n6. Click Rotate All Steppers With Input\n\nNOTE: Rotate Stepper Once CCW/CW\n is used to check if stepper\nworks.'
+        font_size: 25
+        center_x: root.width * 0.03
+        y: root.height * -0.04
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        id: position
+        text: 'Position: '
+        font_size: 25
+        center_x: root.width * 0.0
+        y: root.height * 0.2
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        id: velocity
+        text: 'Velocity: '
+        font_size: 25
+        center_x: root.width * 0.0
+        y: root.height * 0.15
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        text: 'Stepper Movement Screen'
+        font_size: 40
+        center_x: root.width * 0.0
+        y: root.height * 0.45
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        id: status
+        text: 'Status'
+        font_size: 25
+        center_x: root.width * 0.0
+        y: root.height * -0.3
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        # hidden label, appears when an error occurs
+        id: error_stepper
+        text: ''
+        font_size: 40
+        center_x: root.width * 0.0
+        y: root.height * -0.45
+        color: 0.0, 0.0, 0.0, 1
+
+
+# Keyboard and labels for microstepping
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x - 850
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readMicroStepping(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x -750
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readMicroStepping(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x - 650
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readMicroStepping(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x - 850
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readMicroStepping(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x -750
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readMicroStepping(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x -650
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readMicroStepping(6)
+
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x - 850
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readMicroStepping(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x -750
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readMicroStepping(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x -650
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readMicroStepping(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x -750
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.readMicroStepping(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x - 850
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeNumMicrostepping()
+
+    Label:
+        # Label for inputted microstepping value
+        id: micro_value
+        text: 'Microstepping: ' + root.microStepping
+        font_size: 25
+        center_x: root.width * -0.38
+        y: root.height * -0.30
+        color: 0.0, 0.0, 0.0, 1
+
+
+    Label:
+        # label for microstepping keyboard
+        id: micro_info
+        text: 'Enter Microstepping\n(1,2,4,8,16,32)'
+        font_size: 25
+        center_x: root.width * -0.35
+        y: root.height * 0.15
+        color: 0.0, 0.0, 0.0, 1
+
+#Keyboard and labels for acceleration
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x + 650
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setAcceleration(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x +750
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setAcceleration(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x + 850
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setAcceleration(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x + 650
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setAcceleration(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x +750
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setAcceleration(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x +850
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setAcceleration(6)
+
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x + 650
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setAcceleration(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x +750
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setAcceleration(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x +850
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setAcceleration(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x +750
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setAcceleration(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x + 650
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeNumAcceleration()
+
+    Label:
+        # label for inputted acceleration value
+        id: acceleration_value
+        text: 'Accel: ' + root.stepperAcceleration
+        font_size: 25
+        center_x: root.width * 0.38
+        y: root.height * -0.30
+        color: 0.0, 0.0, 0.0, 1
+
+
+    Label:
+        # label for acceleration keyboard
+        id: acceleration_info
+        text: 'Enter Acceleration'
+        font_size: 25
+        center_x: root.width * 0.42
+        y: root.height * 0.15
+        color: 0.0, 0.0, 0.0, 1
+#Keyboard and labels for speed
+
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x + 300
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setSpeed(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x + 400
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setSpeed(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x + 500
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setSpeed(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x + 300
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setSpeed(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x + 400
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setSpeed(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x + 500
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setSpeed(6)
+
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x + 300
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setSpeed(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x +400
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setSpeed(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x + 500
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setSpeed(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x +400
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setSpeed(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x + 300
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeNumSpeed()
+
+    Label:
+        # label for inputted speed value
+        id: speed_value
+        text: 'Speed: ' + root.stepperSpeed
+        font_size: 25
+        center_x: root.width * 0.18
+        y: root.height * -0.30
+        color: 0.0, 0.0, 0.0, 1
+
+
+    Label:
+        # label for speed keyboard
+        id: speed_info
+        text: 'Enter speed'
+        font_size: 25
+        center_x: root.width * 0.24
+        y: root.height * 0.15
+        color: 0.0, 0.0, 0.0, 1
+
+#Kyboard and labels for distance
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x - 500
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setDistance(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x -400
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setDistance(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x - 300
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setDistance(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x - 500
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setDistance(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x -400
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setDistance(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x -300
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setDistance(6)
+
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x - 500
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setDistance(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x -400
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setDistance(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x -300
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setDistance(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x -400
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setDistance(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x - 500
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeDistance()
+
+    Label:
+        # label for inputted distance value
+        id: distance_value
+        text: 'Distance: ' + root.stepper0Distance
+        font_size: 25
+        center_x: root.width * -0.22
+        y: root.height * -0.30
+        color: 0.0, 0.0, 0.0, 1
+
+
+    Label:
+        # label for distance keyboard
+        id: distance_info
+        text: 'Enter Distance to Travel'
+        font_size: 25
+        center_x: root.width * -0.175
+        y: root.height * 0.15
+        color: 0.0, 0.0, 0.0, 1
+
+
