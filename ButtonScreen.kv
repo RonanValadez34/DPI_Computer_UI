@@ -1,0 +1,304 @@
+<ButtonScreen>:
+    name: 'button'
+    FloatLayout:
+        size_hint: None, None
+
+    DPEAButton:
+        # Quit button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "Quit"
+        on_press: root.exit_program()
+
+    DPEAButton:
+        #Go back button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Go back"
+        on_press: root.transition_back()
+
+    DPEAButton:
+        #Select Button 0
+        id: button_0
+        size: 100, 100
+        center_x: root.width * 0.05
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Button 0"
+        on_press: root.selectButton0()
+
+    DPEAButton:
+        #Select Button 1
+        id: button_1
+        size: 100, 100
+        center_x: root.width * 0.15
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Button 1"
+        on_press: root.selectButton1()
+
+    DPEAButton:
+        #Set the red value
+        id: set_red_not_pressed
+        size: 100, 100
+        center_x: root.width * 0.25
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Set Red Value\nNot Pressed"
+        on_press: root.selectRedNotPressed()
+
+    DPEAButton:
+        #set green value
+        id: set_green_not_pressed
+        size: 100, 100
+        center_x: root.width * 0.35
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Set Green Value\nNot Pressed"
+        on_press: root.selectGreenNotPressed()
+
+    DPEAButton:
+        #set blue value
+        id: set_blue_not_pressed
+        size: 100, 100
+        center_x: root.width * 0.45
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Set Blue Value\nNot Pressed"
+        on_press: root.selectBlueNotPressed()
+
+    DPEAButton:
+        #Set the red value
+        id: set_red_pressed
+        size: 100, 100
+        center_x: root.width * 0.55
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Set Red Value Pressed"
+        on_press: root.selectRedPressed()
+
+    DPEAButton:
+        #set green value
+        id: set_green_pressed
+        size: 100, 100
+        center_x: root.width * 0.65
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Set Green Value Pressed"
+        on_press: root.selectGreenPressed()
+
+    DPEAButton:
+        #set blue value
+        id: set_blue_pressed
+        size: 100, 100
+        center_x: root.width * 0.75
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Set Blue Value Pressed"
+        on_press: root.selectBluePressed()
+
+    DPEAButton:
+        #Press to read button value
+        size: 100, 100
+        center_x: root.width * 0.85
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Read Button Value"
+        on_press: root.testPressed()
+
+
+
+    Label:
+        # label for button's value
+        id: button_value
+        text: 'Button not pressed'
+        font_size: 40
+        center_x: root.width * 0.30
+        y: root.height * 0.2
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        # label for button's immediate value
+        id: button_immediate_value
+        text: 'Button not pressed'
+        font_size: 40
+        center_x: root.width * 0.30
+        y: root.height * -0.35
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        # instruction label
+        id: info_label
+        text: 'Notes: Select which button you want to use\nTo set the color, press the color you want to adjust\ntype on keyboard to input value\nAfter all colors inputed for either pressed or not pressed\n Then the color will change\nYou must enter in values for all colors for a given state\n(Pressed or Not Pressed) in order to change color\nThe bottom label shows the button value\nThe other label shows the button value at a given instance\nPress the read Button Value button to see the value at a\ngiven instance\nAn * means button selected'
+        font_size: 25
+        center_x: root.width * -0.25
+        y: root.height * 0.0
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        # label for Title
+        text: 'Button Screen'
+        font_size: 40
+        center_x: root.width * 0.0
+        y: root.height * 0.45
+        color: 0.0, 0.0, 0.0, 1
+
+#keyboard for setting color of button
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x - 100
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x + 100
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x - 100
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x + 100
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(6)
+
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x - 100
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x + 100
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setColor(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x - 100
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeColor()
+
+    Label:
+        # label for red value
+        id: red_value_not_pressed
+        text: 'Red Value Not Pressed: '
+        font_size: 25
+        center_x: root.width * 0.20
+        y: root.height * 0.05
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        # label for green value
+        id: green_value_not_pressed
+        text: 'Green Value Not Pressed: '
+        font_size: 25
+        center_x: root.width * 0.205
+        y: root.height * 0.01
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        #label for blue value
+        id: blue_value_not_pressed
+        text: 'Blue Value Not Pressed: '
+        font_size: 25
+        center_x: root.width * 0.20
+        y: root.height * -0.03
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        # label for red value
+        id: red_value_pressed
+        text: 'Red Value Pressed:'
+        font_size: 25
+        center_x: root.width * 0.20
+        y: root.height * -0.07
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        # label for green value
+        id: green_value_pressed
+        text: 'Green Value Pressed: '
+        font_size: 25
+        center_x: root.width * 0.205
+        y: root.height * -0.11
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        #label for blue value
+        id: blue_value_pressed
+        text: 'Blue Value Pressed: '
+        font_size: 25
+        center_x: root.width * 0.20
+        y: root.height * -0.15
+        color: 0.0, 0.0, 0.0, 1
