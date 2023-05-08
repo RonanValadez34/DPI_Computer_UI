@@ -1,0 +1,556 @@
+<StepperStartupScreen>:
+    #: import time __main__.time
+
+    name: 'stepperStartup'
+    FloatLayout:
+        size_hint: None, None
+# top row of buttons in order left to right:
+    DPEAButton:
+        # button to home the motor
+        id: home_motor
+        size: 100, 100
+        center_x: root.width * 0.05
+        center_y: root.height * 0.95
+        color: 0.035, 0.152, 0.725, 1
+        text: "Home the motor"
+        on_press: root.homeMotor()
+
+    DPEAButton:
+        #Button to change stepper_number to 0
+        id: motor_0
+        size: 100, 100
+        center_x: root.width * 0.15
+        center_y: root.height * 0.95
+        color: 0.035, 0.152, 0.725, 1
+        text: "Motor 0"
+        on_press: root.selectStepper0()
+
+    DPEAButton:
+        #Button to change stepper_number to 1
+        id: motor_1
+        size: 100, 100
+        center_x: root.width * 0.25
+        center_y: root.height * 0.95
+        color: 0.035, 0.152, 0.725, 1
+        text: "Motor 1"
+        on_press: root.selectStepper1()
+
+    DPEAButton:
+        #Button to change stepper_number to 2
+        id: motor_2
+        size: 100, 100
+        center_x: root.width * 0.35
+        center_y: root.height * 0.95
+        color: 0.035, 0.152, 0.725, 1
+        text: "Motor 2"
+        on_press: root.selectStepper2()
+
+    DPEAButton:
+        # button to change to StepperScreen(Test stepper movements)
+        id: test_button
+        text: 'Test Stepper movements'
+        size: 100, 100
+        x: root.width * 0.85
+        y: root.height * 0.90
+        color: 0, 1, 0, 1
+        on_press: app.root.current = "stepper"
+
+    DPEAButton:
+        # Quit button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.95
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+        text: "Quit"
+        on_press: root.exit_program()
+
+# second row of buttons from left to right:
+    DPEAButton:
+        # button to enable all motors
+        id: enable_motor
+        size: 100, 100
+        center_x: root.width * 0.05
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Enable all motors"
+        on_press: root.enableMotors()
+
+    DPEAButton:
+        # button to select rotational homing
+        id: rotational_homing
+        size: 100, 100
+        center_x: root.width * 0.15
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Rotational Homing"
+        on_press: root.setRotationalHoming()
+
+    DPEAButton:
+        # button to select linear homing
+        id: linear_homing
+        size: 100, 100
+        center_x: root.width * 0.25
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Linear Homing"
+        on_press: root.setLinearHoming()
+
+    DPEAButton:
+        # button to set direction to CCW
+        id: CCW_homing
+        size: 100, 100
+        center_x: root.width * 0.35
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "CCW to Home"
+        on_press: root.setHomingDirectionToCCW()
+
+    DPEAButton:
+        # button to set direction to CCW
+        id: CW_homing
+        size: 100, 100
+        center_x: root.width * 0.45
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Cw to Home"
+        on_press: root.setHomingDirectionToCW()
+
+    DPEAButton:
+        # button to set distance units in steps
+        id: steps_homing
+        size: 100, 100
+        center_x: root.width * 0.55
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Home in Steps"
+        on_press: root.setHomingUnitsToSteps()
+
+    DPEAButton:
+        # button to set distance units in revolutions
+        id: revolutions_homing
+        size: 100, 100
+        center_x: root.width * 0.65
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Home in Revolutions"
+        on_press: root.setHomingUnitsToRevolutions()
+
+    DPEAButton:
+        # button to set distance units in millimeters
+        id: millimeters_homing
+        size: 100, 100
+        center_x: root.width * 0.75
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Home in Millimeters"
+        on_press: root.setHomingUnitsToMillimeters()
+
+    DPEAButton:
+        # Has Transmission button
+        id: transmission
+        size: 100, 100
+        center_x: root.width * 0.85
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Has Transmission"
+        on_press: root.Transmission()
+
+    DPEAButton:
+        #Go back button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.8
+        color: 0.035, 0.152, 0.725, 1
+        text: "Go back"
+        on_press: root.transition_back()
+
+    Label:
+        # Directions label
+        id: page_info
+        text: 'READ BEFORE USING:\nAn * means button is selected\nDefault Microstepping set to 16(3200 steps/rev)\nTo change Microstepping, go to next screen\n1. Enable Motors\n2. Select Motor\n 3. Select Direction to Home\n4. Select Homing Type\n5. Select Homing Units\n6. Select Has Transmission if applicable\n7. Enter values\n8. Click Home the Motor\nPress the Test Stepper Movements button\n(Top right corner)\nto change to another page with more movements'
+        font_size: 25
+        center_x: root.width * 0.2
+        y: root.height * 0.0
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        # label for title
+        text: 'Stepper Home Screen'
+        font_size: 40
+        center_x: root.width * 0.05
+        y: root.height * 0.45
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        # hidden label, appears when an error occurs
+        id: error_stepper_home
+        text: ''
+        font_size: 40
+        center_x: root.width * 0.0
+        y: root.height * -0.45
+        color: 0.0, 0.0, 0.0, 1
+
+#Keyboard buttons for setting home speed
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x - 350
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setHomeSpeed(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x - 250
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setHomeSpeed(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x - 150
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setHomeSpeed(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x - 350
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setHomeSpeed(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x - 250
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setHomeSpeed(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x - 150
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setHomeSpeed(6)
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x - 350
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setHomeSpeed(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x - 250
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setHomeSpeed(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x - 150
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setHomeSpeed(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x - 250
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setHomeSpeed(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x - 350
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeSpeedNumber()
+
+    Label:
+        # label for inputted speed to home
+        id: home_speed
+        text: 'Home speed: '
+        font_size: 25
+        center_x: root.width * -0.15
+        y: root.height * -0.30
+        color: 0.0, 0.0, 0.0, 1
+
+    Label:
+        # label for home speed keyboard
+        id: home_info
+        text: 'Enter Home speed:'
+        font_size: 25
+        center_x: root.width * -0.1
+        y: root.height * 0.15
+        color: 0.0, 0.0, 0.0, 1
+
+#keyboard associated with home max steps
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x - 850
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setMaxDistance(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x -750
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setMaxDistance(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x - 650
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setMaxDistance(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x - 850
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setMaxDistance(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x -750
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setMaxDistance(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x -650
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setMaxDistance(6)
+
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x - 850
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setMaxDistance(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x -750
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setMaxDistance(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x -650
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setMaxDistance(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x -750
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setMaxDistance(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x - 850
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeDistanceNumber()
+
+    Label:
+        # label for inputted home max distance
+        id: home_max_distance
+        text: 'Home Max Distance:\n ' +root.homeMaxDistance
+        font_size: 25
+        center_x: root.width * -0.38
+        y: root.height * -0.30
+        color: 0.0, 0.0, 0.0, 1
+
+
+    Label:
+        # label for home max distance keyboard
+        id: home_max_distance_info
+        text: 'Enter Max Distance to Home'
+        font_size: 25
+        center_x: root.width * -0.35
+        y: root.height * 0.15
+        color: 0.0, 0.0, 0.0, 1
+
+# keyboard for gear ratio
+    DPEAButton:
+        text: '1'
+        id: one
+        center_x: root.center_x + 650
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setGearRatio(1)
+
+    DPEAButton:
+        text: '2'
+        id: two
+        center_x: root.center_x + 750
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setGearRatio(2)
+
+    DPEAButton:
+        text: '3'
+        id: three
+        center_x: root.center_x + 850
+        center_y: root.center_y + 60
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setGearRatio(3)
+
+    DPEAButton:
+        text: '4'
+        id: four
+        center_x: root.center_x + 650
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setGearRatio(4)
+
+    DPEAButton:
+        text: '5'
+        id: five
+        center_x: root.center_x + 750
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setGearRatio(5)
+
+    DPEAButton:
+        text: '6'
+        id: six
+        center_x: root.center_x + 850
+        center_y: root.center_y - 40
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setGearRatio(6)
+
+
+    DPEAButton:
+        text: '7'
+        id: seven
+        center_x: root.center_x + 650
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setGearRatio(7)
+
+    DPEAButton:
+        text: '8'
+        id: eight
+        center_x: root.center_x + 750
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setGearRatio(8)
+
+    DPEAButton:
+        text: '9'
+        id: nine
+        center_x: root.center_x + 850
+        center_y: root.center_y - 140
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setGearRatio(9)
+
+    DPEAButton:
+        text: '0'
+        id: zero
+        center_x: root.center_x + 750
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.setGearRatio(0)
+
+    DPEAButton:
+        text: 'Del'
+        id: backspace
+        center_x: root.center_x + 650
+        center_y: root.center_y - 240
+        color: 0.019, 0.337, 1, 1
+        size: 80, 80
+        on_press: root.removeGearRatio()
+
+    Label:
+        # label for inputted gear ratio
+        id: gearRatio_value
+        text: 'Gear Ratio: ' + root.gearRatio
+        font_size: 25
+        center_x: root.width * 0.38
+        y: root.height * -0.30
+        color: 0.0, 0.0, 0.0, 1
+
+
+    Label:
+        # label for gear ratio keyboard
+        id: gearRatio_info
+        text: 'Enter Gear Ratio Between\nStepper and Transmission'
+        font_size: 25
+        center_x: root.width * 0.42
+        y: root.height * 0.15
+        color: 0.0, 0.0, 0.0, 1
+
+
+
+
+
+
