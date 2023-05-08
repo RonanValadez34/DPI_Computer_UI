@@ -1,0 +1,108 @@
+<MainScreen>:
+    #: import time __main__.time
+
+    name: 'main'
+    FloatLayout:
+        size_hint: None, None
+
+    # button to change to stepper screen
+    DPEAButton:
+        id: test_button
+        text: 'Test Stepper'
+        size: 100, 100
+        x: root.width * 0.5
+        y: root.height * 0.15
+        color: 0, 1, 0, 1
+        on_press: app.root.current = "StepperStartup"
+
+    # button to change to servo screen
+    DPEAButton:
+        text: "Test Servo"
+        size: 100, 100
+        x: root.width * 0.5
+        y: root.height * 0.25
+        color: 1, 0, 0, 1
+        on_press: app.root.current = "servo"
+
+    # button to change to button screen
+    DPEAButton:
+        text: "Test Button"
+        size: 100, 100
+        x: root.width * 0.5
+        y: root.height * 0.35
+        color: 1, 0, 0, 1
+        on_press: app.root.current = "button"
+
+    # button to change to DC screen
+    DPEAButton:
+        id: test_button
+        text: 'Test DC Motor'
+        size: 100, 100
+        x: root.width * 0.5
+        y: root.height * 0.45
+        color: 0, 1, 0, 1
+        on_press: app.root.current = "DC"
+
+    # button to change to input screen
+    DPEAButton:
+        id: test_button
+        text: 'Test Input'
+        size: 100, 100
+        x: root.width * 0.5
+        y: root.height * 0.55
+        color: 0, 1, 0, 1
+        on_press: app.root.current = "input"
+
+    # button to change to output screen
+    DPEAButton:
+        id: test_button
+        text: 'Test Output'
+        size: 100, 100
+        x: root.width * 0.5
+        y: root.height * 0.65
+        color: 0, 1, 0, 1
+        on_press: app.root.current = "output"
+
+    # button to change to neopixel screen
+    DPEAButton:
+        id: test_button
+        text: 'Test Neopixel'
+        size: 100, 100
+        x: root.width * 0.5
+        y: root.height * 0.75
+        color: 0, 1, 0, 1
+        on_press: app.root.current = "Neopixel"
+
+    # button to change to encoder screen
+    DPEAButton:
+        id: test_button
+        text: 'Test Encoder'
+        size: 100, 100
+        x: root.width * 0.5
+        y: root.height * 0.85
+        color: 0, 1, 0, 1
+        on_press: app.root.current = "Encoder"
+
+    # button to change to potentiometer screen
+    DPEAButton:
+        id: test_button
+        text: 'Test Potentiometer'
+        size: 100, 100
+        x: root.width * 0.65
+        y: root.height * 0.85
+        color: 0, 1, 0, 1
+        on_press: app.root.current = "Potentiometer"
+
+    DPEAButton:
+        # Quit button
+        size: 100, 100
+        center_x: root.width * 0.95
+        center_y: root.height * 0.95
+
+        background_color: 0,0,0,0
+        color: 0.035, 0.152, 0.725, 1
+
+        text: "Quit"
+        on_press: root.exit_program()
+
+
